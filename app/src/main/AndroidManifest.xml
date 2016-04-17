@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.arshdeep.gradify" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/gradify_li_7_480"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".StudentInfo"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <!-- category android:name="android.intent.category.LAUNCHER" / -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Downloads"
+            android:label="Downloads"
+            android:theme="@style/AppTheme2">
+
+        </activity>
+
+        <activity
+            android:name=".Result"
+            android:label="My Result"
+            android:parentActivityName=".StudentInfo" >
+
+            <!-- The meta-data element is needed for versions lower than 4.1 -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.arshdeep.gradify.StudentInfo" />
+            >
+        </activity>
+
+
+        <activity
+            android:name=".CGPAcalculator"
+            android:label="@string/title_activity_cgpacalculator" >
+        </activity>
+        <activity
+            android:name=".HelpFAQ"
+            android:label="@string/title_activity_help_faq" >
+        </activity>
+        <activity
+            android:name=".AboutUs"
+            android:label="@string/title_activity_about_us" >
+        </activity>
+    </application>
+
+</manifest>

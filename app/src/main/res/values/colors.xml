@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+       <!--Blue 500-->
+    <color name="colorPrimary">#2196F3</color>
+    <!--Blue 700-->
+    <color name="colorPrimaryDark">#1976D2</color>
+    <!--Red A200-->
+    <color name="colorAccent">#fff</color>
+    <!--Grey or #B6B6B6-->
+    <color name="colorControlHighlight">#ccc</color>
+    <color name="navigationBarColor">#000000</color>
+</resources>

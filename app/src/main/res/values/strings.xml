@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Gradify</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="message">WELCOME!</string>
+    <string name="splash">Hi,there.</string>
+    <string name="activity_login">Login</string>
+    <string name="Roll">Roll number</string>
+    <string name="Name">Name</string>
+    <string name="login">LOGIN</string>
+    <string name="Get_started">Get started with</string>
+    <string name="Gradify">GRADIFY</string>
+    <string name="help">Help?</string>
+    <string name="aboutus">About us</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_closed">Closed</string>
+
+    <string name="title_section1">1st year</string>
+    <string name="title_section2">2nd year</string>
+    <string name="title_section3">3rd year</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_test">TestActivity</string>
+
+
+
+    <string name="activity_label">Example</string>
+
+    <string name="image_button_content_description">Change state of section</string>
+
+
+
+    <string name="help_text">Help. WE are here to help you. Blah blah blah blah blah
+    And some more blah blah blah blah blah</string>
+
+
+
+    <string-array name="tabs">
+        <item>Sem 1</item>
+        <item>Sem 2</item>
+    </string-array>
+    <string name="title_activity_top_rated_fragment">TopRatedFragment</string>
+    <string name="title_activity_downloads">Downloads</string>
+    <string name="title_activity_cgpacalculator">CGPAcalculator</string>
+    <string name="title_activity_help_faq">HelpFAQ</string>
+    <string name="title_activity_about_us">AboutUs</string>
+</resources>

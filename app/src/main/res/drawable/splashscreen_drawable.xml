@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item>
+        <bitmap
+            android:src="@drawable/sp_back"
+            android:tileMode="disabled"
+            android:gravity="center_horizontal|center_vertical"/>
+    </item>
+
+
+</layer-list>
