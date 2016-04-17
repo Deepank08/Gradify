@@ -1,5 +1,6 @@
 package com.example.arshdeep.gradify;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -180,5 +181,11 @@ public class Result extends StudentInfo {
         return ;
     }*/
 
-
+    @Override
+    public void onBackPressed() {
+        Intent i=new Intent(this, StudentInfo.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+        finish();
+    }
 }
