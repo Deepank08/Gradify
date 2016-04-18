@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 
 public class Result extends StudentInfo {
@@ -22,6 +23,7 @@ public class Result extends StudentInfo {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
+
 
 
     @Override
@@ -115,6 +117,8 @@ public class Result extends StudentInfo {
          */
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+
 
 
     }

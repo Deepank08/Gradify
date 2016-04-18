@@ -3,14 +3,128 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Semester Results"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:orientation="horizontal">
+
+
+    //Column Course Code
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="This is a tab layout"
-        android:id="@+id/textView"
-        android:gravity="center" />
+        android:orientation="vertical"
+        android:layout_weight="1">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Course Code"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listCourseCode"/>
+
+        </LinearLayout>
+
+    //Column Course Name
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Course Name"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listCourseName"/>
+
+    </LinearLayout>
+
+    //Column Credit
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Credit"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listCredit"/>
+
+    </LinearLayout>
+
+    //Column Grade
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grade"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listGrade"/>
+
+    </LinearLayout>
+
+
+    </LinearLayout>
 </LinearLayout>
+
+    <!--TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="*">
+
+        <TableRow>
+            <TextView
+                android:text="Course Code"/>
+            <TextView
+                android:text="Course Name"/>
+            <TextView
+                android:text="Credit"/>
+            <TextView
+                android:text="Grade"/>
+        </TableRow>
+    <TableRow>
+        <TextView
+            android:id="@+id/courseCode1"/>
+        <TextView
+            android:id="@+id/courseName"/>
+        <TextView
+            android:id="@+id/credit1"/>
+        <TextView
+            android:id="@+id/grade1"/>
+    </TableRow>
+    </TableLayout-->

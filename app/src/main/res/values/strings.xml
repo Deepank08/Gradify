@@ -48,4 +48,10 @@
     <string name="title_activity_cgpacalculator">CGPAcalculator</string>
     <string name="title_activity_help_faq">HelpFAQ</string>
     <string name="title_activity_about_us">AboutUs</string>
+
+    <string-array name="NoOfSubjects">
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
 </resources>
