@@ -1,5 +1,9 @@
 package com.example.arshdeep.gradify;
 
+/**
+ * Written by Varun Dhall.
+ */
+
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,7 +17,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.arshdeep.gradify.adapters.ItemClickListener;
 import com.example.arshdeep.gradify.adapters.Section;
@@ -30,8 +33,9 @@ public class Downloads extends AppCompatActivity implements ItemClickListener {
 
     RecyclerView mRecyclerView;
     SessionManager session;
-    String shared_pref_data ;
-    CoordinatorLayout coordinatorLayout;
+    String shared_pref_data ; //to get the shared data
+    CoordinatorLayout coordinatorLayout; //for snackbar notification
+    String filename=""; //to handle the filename for offline sd storage
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,31 +55,29 @@ public class Downloads extends AppCompatActivity implements ItemClickListener {
 
         //random data
         ArrayList<Item> arrayList = new ArrayList<>();
-        arrayList.add(new Item("CSE", 0, "http://gradify3.azurewebsites.net/Syllabus/" + shared_pref_data + "btechcse.pdf"));
-        arrayList.add(new Item("iPad", 1, ""));
-        arrayList.add(new Item("iPod", 2, ""));
-        arrayList.add(new Item("iMac", 3, ""));
+        arrayList.add(new Item("Computer Science", 0, "http://gradify3.azurewebsites.net/Syllabus/" + shared_pref_data + "btechcse.pdf"));
+        arrayList.add(new Item("Mechanical", 1, "http://gradify3.azurewebsites.net/Syllabus/" + shared_pref_data + "btechme.pdf"));
+        arrayList.add(new Item("Civil", 2, "http://gradify3.azurewebsites.net/Syllabus/" + shared_pref_data + "btechce.pdf"));
+        arrayList.add(new Item("Electronics", 3, "http://gradify3.azurewebsites.net/Syllabus/" + shared_pref_data + "btechece.pdf"));
+        arrayList.add(new Item("Electrical", 4, "http://gradify3.azurewebsites.net/Syllabus/" + shared_pref_data + "btechee.pdf"));
+        arrayList.add(new Item("Information Technology", 5, "http://gradify3.azurewebsites.net/Syllabus/" + shared_pref_data + "btechit.pdf"));
         sectionedExpandableLayoutHelper.addSection("Syllabus", arrayList);
         arrayList = new ArrayList<>();
-        arrayList.add(new Item("LG", 0, ""));
-        arrayList.add(new Item("Apple", 1, ""));
-        arrayList.add(new Item("Samsung", 2, ""));
-        arrayList.add(new Item("Motorola", 3, ""));
-        arrayList.add(new Item("Sony", 4, ""));
-        arrayList.add(new Item("Nokia", 5, ""));
-        sectionedExpandableLayoutHelper.addSection("Companies", arrayList);
+        arrayList.add(new Item("Semester Schedule", 0, "http://gradify3.azurewebsites.net/Exam/" + shared_pref_data + "btendsem.pdf"));
+        arrayList.add(new Item("Mid Term I Schedule", 1, "http://gradify3.azurewebsites.net/Exam/" + shared_pref_data + "btmidterm1.pdf"));
+        arrayList.add(new Item("Mid Term II Schedule", 2, "http://gradify3.azurewebsites.net/Exam/" + shared_pref_data + "btmidterm2.pdf"));
+        arrayList.add(new Item("Seating Plan", 3, "http://gradify3.azurewebsites.net/Exam/" + shared_pref_data + "btseatingplan.pdf"));
+        arrayList.add(new Item("Admit Card", 4, "http://gradify3.azurewebsites.net/Exam/" + shared_pref_data + "btadmitcard.pdf"));
+        arrayList.add(new Item("Exam Code", 5, "http://gradify3.azurewebsites.net/Exam/" + shared_pref_data + "btexamcode.pdf"));
+        sectionedExpandableLayoutHelper.addSection("Exam Corner", arrayList);
         arrayList = new ArrayList<>();
-        arrayList.add(new Item("Chocolate", 0, ""));
-        arrayList.add(new Item("Strawberry", 1, ""));
-        arrayList.add(new Item("Vanilla", 2, ""));
-        arrayList.add(new Item("Butterscotch", 3, ""));
-        arrayList.add(new Item("Grape", 4, ""));
-        sectionedExpandableLayoutHelper.addSection("Ice cream", arrayList);
-
-        sectionedExpandableLayoutHelper.notifyDataSetChanged();
-
-        //checking if adding single item works
-        sectionedExpandableLayoutHelper.addItem("Ice cream", new Item("Tutti frutti",5, ""));
+        arrayList.add(new Item("Academic Calender", 0, "http://gradify3.azurewebsites.net/Student/btacademiccal.pdf"));
+        arrayList.add(new Item("Monthly NewsLetter", 1, "http://gradify3.azurewebsites.net/Student/btmonth.pdf"));
+        arrayList.add(new Item("Quarterly NewsLetter", 2, "http://gradify3.azurewebsites.net/Student/btquarter.pdf"));
+        arrayList.add(new Item("Aarohan", 3, "http://gradify3.azurewebsites.net/Student/btaarohan.pdf"));
+        arrayList.add(new Item("Fee Plan", 4, "http://gradify3.azurewebsites.net/Student/" + shared_pref_data + "btfeeplan.pdf"));
+        arrayList.add(new Item("AXIS Bank Fee Slip", 4, "http://gradify3.azurewebsites.net/Student/" + shared_pref_data + "btfeeslip.pdf"));
+        sectionedExpandableLayoutHelper.addSection("Student Corner", arrayList);
         sectionedExpandableLayoutHelper.notifyDataSetChanged();
     }
 
@@ -92,12 +94,10 @@ public class Downloads extends AppCompatActivity implements ItemClickListener {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -105,15 +105,16 @@ public class Downloads extends AppCompatActivity implements ItemClickListener {
     public void itemClicked(Item item) {
         //Item clicked - download the pdf and open it via default PDF Application
         //now we have two cases 1. either file already exists 2. first time download
-
         //if file already exists then just open it
-        String data = item.getData();
-        String name = item.getName();
-        name = name + ".pdf";
+        String data = item.getData(); // to get the attached indexed URL
+        String name = item.getName(); //to get the attached Name
+        //sub-procedure for naming the files on SD
+        name = name + shared_pref_data + ".pdf";
+        filename = name;
         File pdfFile = new File(Environment.getExternalStorageDirectory() + "/Gradify/" + name);
         if (pdfFile.exists())
         {
-            //PDF file found display it
+            //PDF already exists no need to download again, just open it
             Uri path = Uri.fromFile(pdfFile);
             Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
             pdfIntent.setDataAndType(path, "application/pdf");
@@ -121,23 +122,18 @@ public class Downloads extends AppCompatActivity implements ItemClickListener {
             try {
                 startActivity(pdfIntent);
             } catch (ActivityNotFoundException e) {
-                Toast.makeText(this, "No Application available to view PDF", Toast.LENGTH_SHORT).show();
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, "No Application available to view PDF files. Please install one from Play Store", Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
         }
         else
         {
-            //Downloading the PDF file
-            Toast.makeText(this, "Downloading ..." , Toast.LENGTH_SHORT).show();
-
-
+            //Download the PDF file and display message
             Snackbar snackbar = Snackbar
-                    .make(coordinatorLayout, "This is Awesome", Snackbar.LENGTH_LONG);
-
+                    .make(coordinatorLayout, "Downloading...", Snackbar.LENGTH_LONG);
             snackbar.show();
-
-
-
-
+            //start the download
             new DownloadFile().execute(data, name);
         }
     }
@@ -164,14 +160,35 @@ public class Downloads extends AppCompatActivity implements ItemClickListener {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
-
-            Toast.makeText(getApplicationContext(), "Download Completed!" , Toast.LENGTH_SHORT).show();
+            //show message for Download Completed and option for user to open it
+            Snackbar snackbar = Snackbar
+                    .make(coordinatorLayout, "Download Completed!", Snackbar.LENGTH_LONG)
+                    .setAction("Open File", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String name = filename;
+                            File pdfFile = new File(Environment.getExternalStorageDirectory() + "/Gradify/" + name);
+                            Uri path = Uri.fromFile(pdfFile);
+                            Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
+                            pdfIntent.setDataAndType(path, "application/pdf");
+                            pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            try {
+                                startActivity(pdfIntent);
+                            } catch (ActivityNotFoundException e) {
+                                Snackbar snackbar = Snackbar
+                                        .make(coordinatorLayout, "No Application available to view PDF files. Please install one from Play Store", Snackbar.LENGTH_LONG);
+                                snackbar.show();
+                            }
+                        }
+                    });
+            snackbar.show();
         }
     }
 
     @Override
     public void itemClicked(Section section) {
-        Toast.makeText(this, "Section: " + section.getName() + " clicked", Toast.LENGTH_SHORT).show();
+        Snackbar snackbar = Snackbar
+                .make(coordinatorLayout, "Please Tap/Select an inner option to know more", Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 }

@@ -1,7 +1,7 @@
 package com.example.arshdeep.gradify;
 
 /**
- * Created by varunvd1994 on 18/4/16.
+ * Written by Varun Dhall.
  */
 
 import java.io.File;
