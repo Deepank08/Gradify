@@ -114,10 +114,11 @@ public class CGPAcalculator extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onBackPressed() {
-        Intent i=new Intent(this, StudentInfo.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
+        //Intent i=new Intent(this, StudentInfo.class);
+        //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //startActivity(i);
         finish();
+        return ;
     }
 
     @Override

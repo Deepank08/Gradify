@@ -179,12 +179,12 @@ public class Result extends StudentInfo {
     }
 
     //implemented back button
-    /*@Override
+    @Override
     public void onBackPressed() {
         finish();
         return ;
-    }*/
-
+    }
+/*
     @Override
     public void onBackPressed() {
         Intent i=new Intent(this, StudentInfo.class);
@@ -192,4 +192,5 @@ public class Result extends StudentInfo {
         startActivity(i);
         finish();
     }
+    */
 }

@@ -1,11 +1,8 @@
 package com.example.arshdeep.gradify;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -29,10 +26,8 @@ import com.microsoft.windowsazure.mobileservices.http.NextServiceFilterCallback;
 import com.microsoft.windowsazure.mobileservices.http.ServiceFilter;
 import com.microsoft.windowsazure.mobileservices.http.ServiceFilterRequest;
 import com.microsoft.windowsazure.mobileservices.http.ServiceFilterResponse;
-import com.microsoft.windowsazure.mobileservices.table.query.Query;
-import com.microsoft.windowsazure.mobileservices.table.query.QueryOperations;
+import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
 import com.microsoft.windowsazure.mobileservices.table.sync.MobileServiceSyncContext;
-import com.microsoft.windowsazure.mobileservices.table.sync.MobileServiceSyncTable;
 import com.microsoft.windowsazure.mobileservices.table.sync.localstore.ColumnDataType;
 import com.microsoft.windowsazure.mobileservices.table.sync.localstore.MobileServiceLocalStoreException;
 import com.microsoft.windowsazure.mobileservices.table.sync.localstore.SQLiteLocalStore;
@@ -61,13 +56,13 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
     /**
      * Mobile Service Table used to access data
      */
-    //private MobileServiceTable<StudentListItem> mToDoTable;
+    private MobileServiceTable<StudentListItem> mToDoTable;
 
     //Offline Sync
     /**
      * Mobile Service Table used to access and Sync data
      */
-    private MobileServiceSyncTable<StudentListItem> mToDoTable;
+    //private MobileServiceSyncTable<ToDoItem> mToDoTable;
 
     /**
      * Adapter to sync the items list with the view
@@ -119,10 +114,10 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
 
             // Get the Mobile Service Table instance to use
 
-            //mToDoTable = mClient.getTable(StudentListItem.class);
+            mToDoTable = mClient.getTable(StudentListItem.class);
 
             // Offline Sync
-            mToDoTable = mClient.getSyncTable("StudentListItem", StudentListItem.class);
+            //mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
 
             //Init local storage
             initLocalStore().get();
@@ -134,11 +129,8 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
             ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo1);
             listViewToDo.setAdapter(mAdapter);
 
-            if(isNetworkAvailable()) {// Load the items from the Mobile Service
-                refreshItemsFromTable();
-            }
-            else
-                initLocalStore().get();
+            // Load the items from the Mobile Service
+            refreshItemsFromTable();
 
         } catch (MalformedURLException e) {
             createAndShowDialog(new Exception("There was an error creating the Mobile Service. Verify the URL"), "Error");
@@ -157,6 +149,8 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
 
         drawerFragment.setUp((DrawerLayout)findViewById(R.id.drawer_layout),toolbar);
+
+
 
 
     }
@@ -284,10 +278,10 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
             protected Void doInBackground(Void... params) {
 
                 try {
-                    //final List<StudentListItem> results = refreshItemsFromMobileServiceTable();
+                    final List<StudentListItem> results = refreshItemsFromMobileServiceTable();
 
                     //Offline Sync
-                    final List<StudentListItem> results = refreshItemsFromMobileServiceTableSyncTable();
+                    //final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
 
                     runOnUiThread(new Runnable() {
                         @Override
@@ -314,11 +308,11 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
      * Refresh the list with the items in the Mobile Service Table
      */
 
-  /* private List<StudentListItem> refreshItemsFromMobileServiceTable() throws ExecutionException, InterruptedException {
+    private List<StudentListItem> refreshItemsFromMobileServiceTable() throws ExecutionException, InterruptedException {
         return mToDoTable.where().field("rollno").
                 eq(val(st_rollno)).execute().get();
-        //where().field("rollno").eq(
-    } */
+                //where().field("rollno").eq(
+    }
 
     //Offline Sync
     /**
@@ -326,13 +320,13 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
      * return mToDoTable.where().field("complete").
      eq(val(false)).execute().get();
      */
-    private List<StudentListItem> refreshItemsFromMobileServiceTableSyncTable() throws ExecutionException, InterruptedException {
+    /*private List<ToDoItem> refreshItemsFromMobileServiceTableSyncTable() throws ExecutionException, InterruptedException {
         //sync the data
         sync().get();
-        Query query = QueryOperations.field("rollno").
-                eq(val(st_rollno));
+        Query query = QueryOperations.field("complete").
+                eq(val(false));
         return mToDoTable.read(query).get();
-    }
+    }*/
 
     /**
      * Initialize local storage
@@ -356,15 +350,11 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
                     SQLiteLocalStore localStore = new SQLiteLocalStore(mClient.getContext(), "OfflineStore", null, 1);
 
                     Map<String, ColumnDataType> tableDefinition = new HashMap<String, ColumnDataType>();
-                    tableDefinition.put("rollno", ColumnDataType.String);
-                    tableDefinition.put("name", ColumnDataType.String);
-                    tableDefinition.put("fname", ColumnDataType.String);
-                    tableDefinition.put("coursecode", ColumnDataType.String);
-                    tableDefinition.put("session", ColumnDataType.String);
-                    tableDefinition.put("branchcode", ColumnDataType.String);
-                    tableDefinition.put("email", ColumnDataType.String);
+                    tableDefinition.put("id", ColumnDataType.String);
+                    tableDefinition.put("text", ColumnDataType.String);
+                    tableDefinition.put("complete", ColumnDataType.Boolean);
 
-                    localStore.defineTable("StudentListItem", tableDefinition);
+                    localStore.defineTable("ToDoItem", tableDefinition);
 
                     SimpleSyncHandler handler = new SimpleSyncHandler();
 
@@ -386,7 +376,7 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
      * Sync the current context and the Mobile Service Sync Table
      * @return
      */
-
+    /*
     private AsyncTask<Void, Void, Void> sync() {
         AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
             @Override
@@ -403,7 +393,7 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
         };
         return runAsyncTask(task);
     }
-
+    */
 
     /**
      * Creates a dialog and shows it
@@ -511,12 +501,6 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
     }
 
 
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
