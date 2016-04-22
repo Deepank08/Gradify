@@ -1,0 +1,10 @@
+package com.example.arshdeep.gradify;
+
+/**
+ * Written by team Gradify.
+ */
+
+public class Information {
+    int iconId;
+    String title;
+}
