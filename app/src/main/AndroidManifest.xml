@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.arshdeep.gradify" >
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -39,10 +39,8 @@
         <activity
             android:name=".Downloads"
             android:label="Downloads"
-            android:theme="@style/AppTheme2">
-
+            android:parentActivityName=".StudentInfo" >
         </activity>
-
         <activity
             android:name=".Result"
             android:label="My Result"
@@ -54,19 +52,24 @@
                 android:value="com.example.arshdeep.gradify.StudentInfo" />
             >
         </activity>
-
-
         <activity
-            android:name=".CGPAcalculator"
-            android:label="@string/title_activity_cgpacalculator" >
+            android:name=".SGPAcalculator"
+            android:label="@string/title_activity_cgpacalculator"
+            android:parentActivityName=".StudentInfo" >
         </activity>
         <activity
             android:name=".HelpFAQ"
-            android:label="@string/title_activity_help_faq" >
+            android:label="@string/title_activity_help_faq"
+            android:parentActivityName=".StudentInfo" >
         </activity>
         <activity
             android:name=".AboutUs"
-            android:label="@string/title_activity_about_us" >
+            android:label="@string/title_activity_about_us"
+            android:parentActivityName=".StudentInfo" >
+        </activity>
+        <activity
+            android:name=".Arshdeep"
+            android:label="@string/title_activity_arshdeep" >
         </activity>
     </application>
 

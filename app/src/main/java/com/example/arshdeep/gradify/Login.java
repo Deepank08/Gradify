@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -105,7 +106,7 @@ public class Login extends AppCompatActivity implements DialogInterface.OnClickL
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Dialog d=new Dialog(Login.this);
+                /*final Dialog d=new Dialog(Login.this);
                 d.setContentView(R.layout.help_dialog_box);
                 d.show();
 
@@ -115,7 +116,15 @@ public class Login extends AppCompatActivity implements DialogInterface.OnClickL
                     public void onClick(View v) {
                         d.dismiss();
                     }
-                });
+                });*/
+
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(Login.this, R.style.AppCompatAlertDialogStyle);
+                builder.setTitle("Help");
+                builder.setMessage("You can only login when you enter both a valid name and a valid roll number. Name should be your first name as in the University Stats. And roll number should be a 10 digit University Roll Number. ");
+                builder.setPositiveButton("OK", null);
+                builder.setNegativeButton("Cancel", null);
+                builder.show();
             }
         });
     }

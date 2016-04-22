@@ -1,15 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".StudentInfo">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".StudentInfo">
 
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+    <item
+        android:id="@+id/logout_button"
+        android:onClick="performLogout"
         android:orderInCategory="100"
-        app:showAsAction="never" />
-    <item android:id="@+id/logout_button"
         android:title="Logout"
-        android:orderInCategory="150"
-        app:showAsAction="never"
-        android:onClick="performLogout"/>
+        app:showAsAction="never" />
 
 </menu>

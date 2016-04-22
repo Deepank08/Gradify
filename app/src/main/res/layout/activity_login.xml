@@ -123,7 +123,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/errorName"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="15dp"
+            android:textColor="#ff0000"/>
 
     </LinearLayout>
 
@@ -159,7 +160,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/errorRollNo"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="15dp"
+            android:textColor="#ff0000"/>
 
     </LinearLayout>
 

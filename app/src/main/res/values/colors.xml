@@ -9,4 +9,5 @@
     <!--Grey or #B6B6B6-->
     <color name="colorControlHighlight">#ccc</color>
     <color name="navigationBarColor">#000000</color>
+
 </resources>

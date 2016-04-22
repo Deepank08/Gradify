@@ -82,7 +82,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     break;
                 case 3:context.startActivity(new Intent(context, Result.class));
                     break;
-                case 4:context.startActivity(new Intent(context, CGPAcalculator.class));
+                case 4:context.startActivity(new Intent(context, SGPAcalculator.class));
                     break;
                 case 5:context.startActivity(new Intent(context, Downloads.class));
                     break;
