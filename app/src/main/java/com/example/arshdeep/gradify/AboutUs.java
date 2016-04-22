@@ -12,7 +12,7 @@ import android.view.MenuItem;
 
 import android.app.Activity;
 import android.net.Uri;
-import android.support.annotation.Nullable;
+//import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -65,8 +65,8 @@ public class AboutUs extends AppCompatActivity {
     private void initializeData(){
         persons = new ArrayList<>();
         persons.add(new Person("Arshdeep Kaur Gulati", "+91 7310640817", "arshdeepkaurgulati@gmail.com", R.drawable.arshdeep));
-        persons.add(new Person("Deepank Srivastava", "+91 9415337178", "deepanksrivastava08@gmail.com",R.drawable.arshdeep));
-        persons.add(new Person("Varun Dhall", "+91 8868838028", "varun.vd1994@gmail.com",R.drawable.arshdeep));
+        persons.add(new Person("Deepank Srivastava", "+91 9415337178", "deepanksrivastava08@gmail.com",R.drawable.deepank));
+        persons.add(new Person("Varun Dhall", "+91 8868838028", "varun.vd1994@gmail.com",R.drawable.varun));
     }
 
     private void initializeAdapter(){
