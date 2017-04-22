@@ -22,3 +22,48 @@ It basically solves problems of conventional result display system such as:
 - Help and FAQ section to provide assistance.
 
 ![alt text](ss/ds2.jpg)
+
+#### Configuring the project
+
+Simply download/clone the project on the system and import it in Android Studio.
+Now we need to configure the project. 
+
+**SDK Version**
+
+Now you will see that gradle cannot be sync because it missing some parameters. Open to **gradle.properties** file in the root of the project and add the following lines.
+
+```
+MIN_SDK = 15
+ANDROID_BUILD_SDK_VERSION = 23
+ANDROID_BUILD_TOOLS_VERSION = 21.1.0
+ANDROID_BUILD_TARGET_SDK_VERSION = 23
+ANDROID_COMPILE_SDK_VERSION = 23
+```
+> **Note:**
+>You should make sure that the correct SDK versions and build tools are installed in Android Studio. To do this open the Preferences panel and navigate to **Appearance & Behavour** -> **System Settings** -> **Android SDK** or click on the **SDK Manager** icon in the tool bar. Android SDK versions 4.4 and onwards should be installed. **Android SDK Build-Tools** version 21.1.0 should be installed. 
+
+**Update Gradle**
+
+Next open the **build.gradle** file for your project. It should be called **build.gradle (Project: Your-project-name)**
+
+Update this file by adding the following.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+Now run Gradle to get the project ready to be compiled. The project should now compile without error. 
