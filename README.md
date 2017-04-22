@@ -23,7 +23,7 @@ It basically solves problems of conventional result display system such as:
 
 ![alt text](ss/ds2.jpg)
 
-#### Configuring the project
+## Configuring the project
 
 Simply download/clone the project on the system and import it in Android Studio.
 Now we need to configure the project. 
@@ -67,3 +67,8 @@ allprojects {
 }
 
 Now run Gradle to get the project ready to be compiled. The project should now compile without error. 
+
+## Team
+-Deepank Srivastava | deepank@outlook.com
+-Varun Dhall | varunvd1994@gmail.com
+-Arshdeep Kaur Gulati | arshdeepkaurgulati@gmail.com
