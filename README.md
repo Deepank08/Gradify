@@ -15,7 +15,7 @@ It basically solves problems of conventional result display system such as:
 - Semester wise results in same format as in marksheets.
 - Simple login by Student's name and unique roll number.
 - Seperate download section to download important/frequently used documents asyuchronously on the device.
-- Powered by Microsoft Azure's cloud storage and web-service making it robust and scalable.
+- Powered by **Microsoft Azure's** cloud storage and web-service making it robust and scalable.
 - A CGPA Calculator to calculate a student's expected CGPA using accurate formulae.
 - Intuitive and simple user interface.
 - Push notifications to update about the results, announcements, etc.
@@ -69,6 +69,8 @@ allprojects {
 Now run Gradle to get the project ready to be compiled. The project should now compile without error. 
 
 ## Team
--Deepank Srivastava | deepank@outlook.com
--Varun Dhall | varunvd1994@gmail.com
--Arshdeep Kaur Gulati | arshdeepkaurgulati@gmail.com
+-**Deepank Srivastava** | deepank@outlook.com
+
+-**Varun Dhall** | varunvd1994@gmail.com
+
+-**Arshdeep Kaur Gulati** | arshdeepkaurgulati@gmail.com
