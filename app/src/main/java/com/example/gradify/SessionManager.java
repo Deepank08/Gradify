@@ -100,7 +100,7 @@ import java.util.HashMap;
      * Clear session details
      */
     public void logoutUser() {
-        // Clearing all data from Shared Preferences
+        // Clearing all data from Shared Preferences after logout
         editor.clear();
         editor.commit();
 
@@ -116,9 +116,7 @@ import java.util.HashMap;
         _context.startActivity(i);
     }
 
-    /**
-     * Quick check for login
-     **/
+    //Quick check for login  
     // Get Login State
     public boolean isLoggedIn() {
         return pref.getBoolean(IS_LOGIN, false);

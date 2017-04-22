@@ -112,7 +112,7 @@ public class StudentInfo extends AppCompatActivity implements NavigationDrawerFr
 
             //mToDoTable = mClient.getTable(StudentListItem.class);
 
-            // Offline Sync
+            // Offline Sync of the data in table
             mToDoTable = mClient.getSyncTable("StudentListItem", StudentListItem.class);
 
             //Init local storage

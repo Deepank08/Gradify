@@ -61,9 +61,9 @@ public class Login extends AppCompatActivity implements DialogInterface.OnClickL
                 rollno=RollNo.getText().toString();
 
 
-                hideKeyboard(); //Function to hide keyboard.
+                hideKeyboard(); //Function to hide keyboard after text is entered
 
-                // Toast.makeText(Login.this,"Passed roll no "+rollno,Toast.LENGTH_LONG).show();
+                
                 // Toast.makeText(Login.this,"Passed name "+name,Toast.LENGTH_LONG).show();
                 if(!validaterollnumber(rollno) && !validateName(name))
                 {
@@ -103,7 +103,7 @@ public class Login extends AppCompatActivity implements DialogInterface.OnClickL
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
                 AlertDialog.Builder builder =
                         new AlertDialog.Builder(Login.this, R.style.AppCompatAlertDialogStyle);
                 builder.setTitle("Help");
@@ -177,4 +177,3 @@ public class Login extends AppCompatActivity implements DialogInterface.OnClickL
 
     }
 }
-
