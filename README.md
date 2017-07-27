@@ -44,29 +44,29 @@ ANDROID_COMPILE_SDK_VERSION = 23
 
 **Update Gradle**
 
-Next open the **build.gradle** file for your project. It should be called **build.gradle (Project: Your-project-name)**
+Next open the **build.gradle** file for your project. It should be called **build.gradle (Project: Your-project-name)**  
 
-Update this file by adding the following.
+Update this file by adding the following.    
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+buildscript {  
+    repositories {  
+        jcenter()  
+    }  
+    dependencies {  
+        classpath 'com.android.tools.build:gradle:1.2.3'  
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
+        // NOTE: Do not place your application dependencies here; they belong  
+        // in the individual module build.gradle files  
+    }  
+}  
 
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
+allprojects {  
+    repositories {  
+        jcenter()  
+    }  
+}  
 
-Now run Gradle to get the project ready to be compiled. The project should now compile without error. 
+Now run Gradle to get the project ready to be compiled. The project should now compile without error.   
 
 ## Team
 -**Deepank Srivastava** | deepank@outlook.com
